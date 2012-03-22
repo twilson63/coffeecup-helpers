@@ -23,3 +23,10 @@ module.exports =
   textArea: require "#{__dirname}/textArea"
   passwordField: require "#{__dirname}/passwordField"
   emailField: require "#{__dirname}/emailField"
+  # fileField
+  # buttonField
+  # form
+  # twitterField
+  # dollarField
+  # searchField
+  # buttons and icons

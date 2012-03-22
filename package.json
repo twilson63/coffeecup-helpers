@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git://github.com/twilson63/coffeecup-helpers.git"
   },
-  "main": "lib",
+  "main": "lib/helpers",
   "scripts": {
     "test": "mocha"
   },

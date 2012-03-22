@@ -1,4 +1,4 @@
-# radios
+# checkboxes
 #
 # checkboxes creates a list of checkboxes from an array
 # each item in the array should have a display and value attribute

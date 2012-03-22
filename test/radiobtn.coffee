@@ -1,11 +1,10 @@
-formHelpers = require '../lib/formHelpers'
+helpers = require '../lib/helpers'
 coffeecup = require 'coffeecup'
 
 describe 'radiobtn', ->
   it 'should render input radio tag', ->
     template = ->
       radiobtn 'foo', 'Radio Foo'
-    helpers = formHelpers
     coffeecup.render(template, hardcode: helpers).should.equal "<label class=\"radio\"><input name=\"foo\" type=\"radio\" />Radio Foo</label>"
 
   # it 'should render input checkbox tag value', ->

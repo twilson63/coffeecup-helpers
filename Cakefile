@@ -143,5 +143,4 @@ task 'watch', 'compile and watch', -> build true, -> log ":-)", green
 # ```
 # cake docs
 # ```
-task 'test', 'run tests', -> build -> 
-  mocha -> log ":)", green
+task 'test', 'run tests', -> build -> mocha -> log ":)", green
