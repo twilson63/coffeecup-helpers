@@ -32,3 +32,4 @@ module.exports =
   # buttons and icons
   # controls
   textControl: require "#{__dirname}/controls/textControl"
+  passwordControl: require "#{__dirname}/controls/passwordControl"
