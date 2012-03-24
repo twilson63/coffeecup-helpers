@@ -1,0 +1,28 @@
+{
+  "author": "Tom Wilson <tom@jackhq.com>",
+  "name": "flatiron-example",
+  "description": "Sample Web App using CoffeeCup Helpers",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/twilson63/coffeecup-helpers.git"
+  },
+  "main": "server",
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": "0.6 || 0.7"
+  },
+  "dependencies": {
+    "flatiron": "*",
+    "ecstatic": "*",
+    "union": "*",
+    "creamer": "*"
+  },
+  "devDependencies": {
+    "nock": "*",
+    "should": "*"
+  },
+  "optionalDependencies": {}
+}
