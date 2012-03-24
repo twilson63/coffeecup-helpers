@@ -1,0 +1,18 @@
+<!DOCTYPE html>  <html> <head>   <title>checkboxes.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="checkbox.html">                 checkbox.coffee               </a>                                           <a class="source" href="checkboxes.html">                 checkboxes.coffee               </a>                                           <a class="source" href="controlGroup.html">                 controlGroup.coffee               </a>                                           <a class="source" href="emailField.html">                 emailField.coffee               </a>                                           <a class="source" href="helpers.html">                 helpers.coffee               </a>                                           <a class="source" href="passwordField.html">                 passwordField.coffee               </a>                                           <a class="source" href="radiobtn.html">                 radiobtn.coffee               </a>                                           <a class="source" href="radios.html">                 radios.coffee               </a>                                           <a class="source" href="selectList.html">                 selectList.coffee               </a>                                           <a class="source" href="textArea.html">                 textArea.coffee               </a>                                           <a class="source" href="textField.html">                 textField.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               checkboxes.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>checkboxes</p>
+
+<p>checkboxes creates a list of checkboxes from an array
+each item in the array should have a display and value attribute</p>
+
+<p>usage:</p>
+
+<p>template = ->
+  checkboxes "checkbox_group", [{display: 'Option 1', value: '1'}, {display: 'Option 2', value: '2'}]</p>
+
+<p>renders</p>
+
+<p><label class="checkbox"><input name="checkbox_group" value="1" type="checkbox" />Option 1</label>
+<label class="checkbox"><input name="checkbox_group" value="2" type="checkbox" />Option 2</label></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">module.exports = </span><span class="nf">(name, list, attributes) -&gt;</span>
+  <span class="k">for</span> <span class="nx">item</span> <span class="k">in</span> <span class="nx">list</span>
+    <span class="nx">checkbox</span> <span class="nx">name</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">display</span><span class="p">,</span> <span class="nx">item</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="nx">attributes</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

@@ -1,4 +1,4 @@
-# # textField(name, value, attributes)
+# # textControl(name, value, attributes)
 #
 # CoffeeCup Helper to generate label and input type text
 # element.
@@ -9,21 +9,27 @@
 #     -----------|--------|------------|----------------------
 #     name       | string | optional   | input element name attribute and label display
 #     value      | string | optional   | input element value attribute
-#     attributes | object | optional   | object containing both input and label attributes
+#     attributes | object | optional   | object containing both input attr, label attr, and help text
 #
 # usage
 #
 #    template = ->
 #      form ->
-#        p ->
-#          textField 'name', label: { class: 'foo' }, input: { class: 'bar'}
+#        fieldset ->
+#          legend 'Section'
+#          textControl 'name', help: 'Enter your name'
 #
 # output
 #     <form>
-#       <p>
-#         <label class="foo" for="name">Name</label>
-#         <input class="bar" name="name" id="name" type="text" />
-#       </p>
+#       <fieldset>
+#         <div class="control-group">
+#           <label class="control-label" for="name">Name</label>
+#           <div class="controls">
+#             <input name="name" id="name" type="text" />
+#             <p class="help-block">Enter your name</p>
+#           </div>
+#         </div>
+#       </fieldset>
 #     </form>
 #
 module.exports = (name, value, attributes) ->
@@ -46,9 +52,12 @@ module.exports = (name, value, attributes) ->
   attributes.input.value = value if value?
   attributes.input.type = 'text'
 
-  # label attr
   attributes.label ?= {}
   attributes.label.for ?= attributes.input.id
-
-  label attributes.label, capitalize(attributes.input.name || '') if attributes.input.name?
-  input attributes.input
+  attributes.label['class'] = 'control-label'
+  
+  div '.control-group', ->
+    label attributes.label, capitalize(attributes.input.name || '') if attributes.input.name?
+    div '.controls', ->
+      input attributes.input
+      p '.help-block', attributes.help if attributes.help?

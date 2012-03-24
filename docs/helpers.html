@@ -1,0 +1,29 @@
+<!DOCTYPE html>  <html> <head>   <title>helpers.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="checkbox.html">                 checkbox.coffee               </a>                                           <a class="source" href="checkboxes.html">                 checkboxes.coffee               </a>                                           <a class="source" href="controlGroup.html">                 controlGroup.coffee               </a>                                           <a class="source" href="emailField.html">                 emailField.coffee               </a>                                           <a class="source" href="helpers.html">                 helpers.coffee               </a>                                           <a class="source" href="passwordField.html">                 passwordField.coffee               </a>                                           <a class="source" href="radiobtn.html">                 radiobtn.coffee               </a>                                           <a class="source" href="radios.html">                 radios.coffee               </a>                                           <a class="source" href="selectList.html">                 selectList.coffee               </a>                                           <a class="source" href="textArea.html">                 textArea.coffee               </a>                                           <a class="source" href="textField.html">                 textField.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               helpers.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>CoffeeCup FormHelpers</h1>
+
+<p>This module is built explicitly for CoffeeCup</p>
+
+<p>usage:</p>
+
+<p><code>coffeescript
+cc = require 'coffeecup'
+template = -&gt;
+  textField 'foo', @bar, id: 'world'
+helpers = formHelpers
+cc.render(template, bar: 'bar', hardcode: helpers).should.equal "&lt;input id=\"world\" type=\"text\" name=\"foo\" value=\"bar\" /&gt;"
+</code></p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">module.exports = </span>
+  <span class="nv">controlGroup: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/controlGroup&quot;</span>
+  <span class="nv">selectList: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/selectList&quot;</span>
+  <span class="nv">radios: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/radios&quot;</span>
+  <span class="nv">radiobtn: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/radiobtn&quot;</span>
+  <span class="nv">checkboxes: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/checkboxes&quot;</span>
+  <span class="nv">checkbox: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/checkbox&quot;</span>
+  <span class="nv">textField: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/textField&quot;</span>
+  <span class="nv">textArea: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/textArea&quot;</span>
+  <span class="nv">passwordField: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/passwordField&quot;</span>
+  <span class="nv">emailField: </span><span class="nx">require</span> <span class="s2">&quot;#{__dirname}/emailField&quot;</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>fileField
+buttonField
+form
+twitterField
+dollarField
+searchField
+buttons and icons</p>             </td>             <td class="code">               <div class="highlight"><pre></pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

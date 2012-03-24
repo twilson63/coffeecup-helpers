@@ -1,0 +1,23 @@
+<!DOCTYPE html>  <html> <head>   <title>textArea.coffee</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="checkbox.html">                 checkbox.coffee               </a>                                           <a class="source" href="checkboxes.html">                 checkboxes.coffee               </a>                                           <a class="source" href="controlGroup.html">                 controlGroup.coffee               </a>                                           <a class="source" href="emailField.html">                 emailField.coffee               </a>                                           <a class="source" href="helpers.html">                 helpers.coffee               </a>                                           <a class="source" href="passwordField.html">                 passwordField.coffee               </a>                                           <a class="source" href="radiobtn.html">                 radiobtn.coffee               </a>                                           <a class="source" href="radios.html">                 radios.coffee               </a>                                           <a class="source" href="selectList.html">                 selectList.coffee               </a>                                           <a class="source" href="textArea.html">                 textArea.coffee               </a>                                           <a class="source" href="textField.html">                 textField.coffee               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               textArea.coffee             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <p>textArea</p>
+
+<p><em>given</em> string as name
+<em>and</em> optional string as value
+<em>and</em> object as hash of html attributes
+<em>then</em> return an html textarea tag</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nv">module.exports = </span><span class="nf">(name, value, attributes) -&gt;</span>
+  <span class="k">if</span> <span class="k">typeof</span> <span class="nx">name</span> <span class="o">is</span> <span class="s1">&#39;object&#39;</span>
+    <span class="nv">attributes = </span><span class="nx">name</span>
+    <span class="nv">name = </span><span class="kc">null</span>
+  <span class="k">else</span> <span class="k">if</span> <span class="k">typeof</span> <span class="nx">value</span> <span class="o">is</span> <span class="s1">&#39;object&#39;</span>
+    <span class="nv">attributes = </span><span class="nx">value</span>
+    <span class="nv">value = </span><span class="kc">null</span>
+
+  <span class="nv">attributes = </span><span class="p">{}</span> <span class="nx">unless</span> <span class="nx">attributes</span><span class="o">?</span>
+  <span class="nv">attributes.name = </span><span class="nx">name</span> <span class="k">if</span> <span class="nx">name</span><span class="o">?</span>
+
+  <span class="nv">labelAttributes = </span><span class="p">{}</span>
+  <span class="nx">labelAttributes</span><span class="p">.</span><span class="k">for</span> <span class="o">?=</span> <span class="nx">attributes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>
+
+  <span class="nx">label</span> <span class="nx">labelAttributes</span><span class="p">,</span> <span class="nx">attributes</span><span class="p">.</span><span class="nx">name</span> <span class="o">||</span> <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="nx">name</span><span class="o">?</span>
+  <span class="nx">textarea</span> <span class="nx">attributes</span><span class="p">,</span> <span class="nx">value</span> <span class="o">?=</span> <span class="s1">&#39;&#39;</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 

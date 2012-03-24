@@ -30,3 +30,5 @@ module.exports =
   # dollarField
   # searchField
   # buttons and icons
+  # controls
+  textControl: require "#{__dirname}/controls/textControl"
