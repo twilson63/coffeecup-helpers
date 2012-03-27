@@ -18,7 +18,8 @@
     "coffeecup": "*"
   },
   "devDependencies": {
-    "should": "*"
+    "should": "*",
+    "mocha": "*"
   },
   "optionalDependencies": {}
 }
