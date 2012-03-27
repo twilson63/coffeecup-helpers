@@ -2,7 +2,7 @@
   "author": "Tom Wilson <tom@jackhq.com>",
   "name": "coffeecup-helpers",
   "description": "A coffeecup module of html helpers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "git://github.com/twilson63/coffeecup-helpers.git"
