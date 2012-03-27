@@ -1,44 +1,33 @@
-helpers = require '../lib/helpers'
-coffeecup = require 'coffeecup'
+hardcode = require '../lib/helpers'
+cc = require 'coffeecup'
 
-describe 'textField', ->
-  it 'should render input text tag no value', ->
-    output = """
+describe 'coffeecup-helpers', ->
+  describe '#textField(name, value, attributes)', ->
+    htmlf = (html) -> html.replace /(\n+|\n\s+)/, ''
+    it 'should render input text tag no value', ->
+      output = htmlf """
 <label for="world">Foo</label>
 <input id="world" name="foo" type="text" />
-"""
-    output = output.replace(/\n+/g, '')
-    console.log output
-    template = ->
-      textField 'foo', input: { id: 'world' }
-    coffeecup.render(template, hardcode: helpers).should.equal output
+      """
+      t = ->
+        textField 'foo', input: { id: 'world' }
+      cc.render(t, { hardcode }).should.equal output
 
-  it 'should render input text tag value', ->
-    output = """
+    it 'should render input text tag value', ->
+      output = htmlf """
 <label for="world">Foo</label>
 <input id="world" name="foo" value="bar" type="text" />
-"""
-    output = output.replace(/\n+/g, '')
+      """
+      t = ->
+        textField 'foo', @bar, input: { id: 'world' }
+      attr = { hardcode, bar: 'bar'}
+      cc.render(t, attr).should.equal output
 
-    template = ->
-      textField 'foo', @bar, input: { id: 'world' }
-    coffeecup.render(template, bar: 'bar', hardcode: helpers).should.equal output
-
-  it 'should render input text tag nothing else', ->
-    output = "<input type=\"text\" />"
-    template = ->
-      textField()
-    coffeecup.render(template, bar: 'bar', hardcode: helpers).should.equal output
-
-  it 'should capitalize name', ->
-    output = """
-<p>
-  <label for="foo_bar_baz">Foo Bar Baz</label>
-  <input name="foo_bar_baz" id="foo_bar_baz" type="text" />
-</p>
-"""
-    output = output.replace /(\n\s+|\n+)/g, ''
-    template = ->
-      p ->
-        textField 'foo_bar_baz'
-    coffeecup.render(template, hardcode: helpers).should.equal output
+    it 'should render input text tag nothing else', ->
+      output = htmlf """
+<input type="text" />
+      """
+      t = ->
+        textField()
+      attr = { hardcode, bar: 'bar'}
+      cc.render(t, attr).should.equal output

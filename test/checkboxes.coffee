@@ -1,23 +1,36 @@
-helpers = require '../lib/helpers'
-coffeecup = require 'coffeecup'
+hardcode = require '../lib/helpers'
+cc = require 'coffeecup'
 
-describe 'checkboxes', ->
-  it 'should render array of radio controls', ->
-    template = ->
-      checkboxes 'group', [{display: 'Option 1', value: '1'}, {display: 'Option 2', value: '2'}]
-
-    coffeecup.render(template, hardcode: helpers).should.equal '<label class="checkbox"><input name="group" value="1" type="checkbox" />Option 1</label><label class="checkbox"><input name="group" value="2" type="checkbox" />Option 2</label>'
-
-  # it 'should not render array of radio controls with inline class', ->
-  #   template = ->
-  #     radios 'group', [{display: 'Yes', value: 'y'}, {display: 'No', value: 'n'}], label: {class: 'inline'}
-  # 
-  #   helpers = formHelpers
-  #   coffeecup.render(template, hardcode: helpers).should.equal '<label class="radio inline"><input name="group" value="y" type="radio" />Yes</label><label class="radio inline"><input name="group" value="n" type="radio" />No</label>'
-  # 
-  # it 'should not render array of radio controls', ->
-  #   template = ->
-  #     radios 'group', []
-  # 
-  #   helpers = formHelpers
-  #   coffeecup.render(template, hardcode: helpers).should.be.empty
+describe 'coffeecup-helpers', ->
+  describe '#checkboxes(name, list, attributes)', ->
+    htmlf = (html) -> html.replace /(\n\s+|\n+)/g, ''
+    it 'should render array of checkboxes controls', ->
+      t = ->
+        checkboxes 'group', [
+          {display: 'Option 1', value: '1'}
+          {display: 'Option 2', value: '2'}
+        ]
+      output = htmlf """
+<label class="checkbox">
+  <input name="group" type="checkbox" value="1" />Option 1
+</label>
+<label class="checkbox">
+  <input name="group" type="checkbox" value="2" />Option 2
+</label>
+      """
+      cc.render(t, { hardcode }).should.equal output
+    it 'should render array of checkboxes inline controls', ->
+      t = ->
+        checkboxes 'group', [
+          {display: 'Option 1', value: '1'}
+          {display: 'Option 2', value: '2'}
+        ], label: { class: 'inline' }
+      output = htmlf """
+<label class="checkbox inline">
+  <input name="group" type="checkbox" value="1" />Option 1
+</label>
+<label class="checkbox inline">
+  <input name="group" type="checkbox" value="2" />Option 2
+</label>
+      """
+      cc.render(t, { hardcode }).should.equal output

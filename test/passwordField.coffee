@@ -1,25 +1,43 @@
-helpers = require '../lib/helpers'
-coffeecup = require 'coffeecup'
+hardcode = require '../lib/helpers'
+cc = require 'coffeecup'
 
+describe 'coffeecup-helpers', ->
+  describe '#passwordField(name, value, attributes)', ->
+    htmlf = (html) -> html.replace /(\n+|\n\s+)/, ''
+    it 'should render input password', ->
+      output = htmlf """
+<label for="foo">Foo</label>
+<input name="foo" id="foo" type="password" />
+      """
+      t = ->
+        passwordField 'foo'
+      cc.render(t, { hardcode }).should.equal output
 
-describe 'passwordField', ->
-  it 'should render input password', ->
-    template = ->
-      passwordField 'foo'
-    coffeecup.render(template, hardcode: helpers).should.equal "<label for=\"foo\">Foo</label><input name=\"foo\" id=\"foo\" type=\"password\" />"
+    it 'should render input password tag no value', ->
+      output = htmlf """
+<label for="world">Foo</label>
+<input id="world" name="foo" type="password" />
+      """
+      t = ->
+        passwordField 'foo', input: { id: 'world' }
+      cc.render(t, { hardcode }).should.equal output
 
-  it 'should render input password tag no value', ->
-    template = ->
-      passwordField 'foo', input: { id: 'world' }
-    coffeecup.render(template, hardcode: helpers).should.equal "<label for=\"world\">Foo</label><input id=\"world\" name=\"foo\" type=\"password\" />"
+    it 'should render input password tag value', ->
+      output = htmlf """
+<label for="world">Foo</label>
+<input id="world" name="foo" value="bar" type="password" />
+      """
+      t = ->
+        passwordField 'foo', @bar, input: { id: 'world' }
+      attr = { hardcode, bar: 'bar'}
+      cc.render(t, attr).should.equal output
 
-  it 'should render input password tag value', ->
-    template = ->
-      passwordField 'foo', @bar, input: { id: 'world' }
-    coffeecup.render(template, bar: 'bar', hardcode: helpers).should.equal "<label for=\"world\">Foo</label><input id=\"world\" name=\"foo\" value=\"bar\" type=\"password\" />"
-
-  it 'should render input password tag nothing else', ->
-    template = ->
-      passwordField()
-    coffeecup.render(template, bar: 'bar', hardcode: helpers).should.equal "<input type=\"password\" />"
+    it 'should render input password tag nothing else', ->
+      output = htmlf """
+<input type="password" />
+      """
+      t = ->
+        passwordField()
+      attr = { hardcode, bar: 'bar'}
+      cc.render(t, attr).should.equal output
 

@@ -1,19 +1,47 @@
-helpers = require '../lib/helpers'
-coffeecup = require 'coffeecup'
+hardcode = require '../lib/helpers'
+cc = require 'coffeecup'
 
-describe 'checkbox', ->
-  it 'should render input checkbox tag', ->
-    template = ->
-      checkbox 'foo', 'Are you worldly?'
-    coffeecup.render(template, hardcode: helpers).should.equal "<label class=\"checkbox\"><input name=\"foo\" type=\"checkbox\" />Are you worldly?</label>"
-
-  it 'should render input checkbox tag value', ->
-    template = ->
-      checkbox 'foo', @bar, label: {class: 'inline' }
-    coffeecup.render(template, bar: 'Hello World', hardcode: helpers).should.equal "<label class=\"checkbox inline\"><input name=\"foo\" type=\"checkbox\" />Hello World</label>"
-
-  it 'should render input text tag nothing else', ->
-    template = ->
-      checkbox 'foo'
-    coffeecup.render(template, hardcode: helpers).should.equal "<label class=\"checkbox\"><input name=\"foo\" type=\"checkbox\" />foo</label>"
+describe 'coffeecup-helpers', ->
+  describe '#checkbox(name, display, attributes)', ->
+    htmlf = (html) -> html.replace /(\n\s+|\n+)/g, ''
+    it 'should render input checkbox tag', ->
+      t = ->
+        checkbox 'foo', 'Remember Me'
+      output = htmlf """
+<label class="checkbox">
+  <input name="foo" value="0" type="hidden" />
+  <input name="foo" value="1" type="checkbox" />Remember Me
+</label>
+      """
+      cc.render(t, { hardcode }).should.equal output
+    it 'should render input checkbox tag value', ->
+      t = ->
+        checkbox 'foo', @bar, label: {class: 'inline' }
+      output = htmlf """
+<label class="checkbox inline">
+  <input name="foo" value="0" type="hidden" />
+  <input name="foo" value="1" type="checkbox" />Hello World
+</label>
+      """
+      cc.render(t, { hardcode, bar: "Hello World"}).should.equal output
+    it 'should render name and value only', ->
+      t = ->
+        checkbox 'foo', 'Bar'
+      output = htmlf """
+<label class="checkbox">
+  <input name="foo" value="0" type="hidden" />
+  <input name="foo" value="1" type="checkbox" />Bar
+</label>
+      """  
+      cc.render(t, { hardcode }).should.equal output
+    it 'should render checkbox with different values Yes and No', ->
+      t = ->
+        checkbox 'foo', 'Bar', null, 'Yes', 'No'
+      output = htmlf """
+<label class="checkbox">
+  <input name="foo" value="No" type="hidden" />
+  <input name="foo" value="Yes" type="checkbox" />Bar
+</label>
+      """  
+      cc.render(t, { hardcode }).should.equal output
 
