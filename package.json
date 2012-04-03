@@ -15,12 +15,12 @@
     "node": "0.6 || 0.7 || 0.8"
   },
   "dependencies": {
-    "coffeecup": "*"
+    "coffeecup": "0.3.6"
   },
   "devDependencies": {
-    "coffee-script": "*",
-    "should": "*",
-    "mocha": "*"
+    "coffee-script": "1.2.0",
+    "should": "0.6.0",
+    "mocha": "1.0.0"
   },
   "optionalDependencies": {}
 }
